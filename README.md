@@ -3,6 +3,8 @@
 plantagotchi is a tamagotchi for your plant! With a capacitative soil sensor, an lcd screen, a xiao rp2040, and a mighty cute case :3
 i made this to prevent my plants from dying as always!! and the lil turnip is just a cute touch ;) it changes based on temp and humidity!
 
+(this is just a design for now though, no build tutorial yet!)
+
 <img width="500" height="auto" alt="zine!" src="https://github.com/user-attachments/assets/678afbd1-9ddf-4e3d-bebc-55d4fa4a00a6" />
 
 
