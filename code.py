@@ -25,11 +25,11 @@ display_width = 240
 display_height = 280
 
 moods = {
-    "happy": "",
-    "dry": "",
-    "wet": "",
-    "hot": "",
-    "cold": "",
+    "happy": "/images/happy.bmp",
+    "dry": "/images/dry.bmp",
+    "wet": "/images/wet.bmp",
+    "hot": "/images/hot.bmp",
+    "cold": "/images/cold.bmp",
 }
 
 
