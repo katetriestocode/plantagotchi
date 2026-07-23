@@ -87,16 +87,43 @@ def draw_mood(mood_key):
     _current_tile = new_tile
 
 
+def get_mood(moisture, temp):
+    moisture_bad = moisture < moisture_dry_below or moisture > moisture_wet_above
+    temp_bad = temp < temp_cold_below or temp > temp_hot_above
 
+    if not moisture_bad and not temp_bad:
+        return "happy"
+
+    if moisture_bad and (priority == "moisture" or not temp_bad):
+        return "dry" if moisture < moisture_dry_below else "wet"
+
+    if temp_bad:
+        return "cold" if temp < temp_cold_below else "hot"
+
+    return "dry" if moisture < moisture_dry_below else "wet"
+
+
+current_mood = None 
 
 while True:
-    # read moisture level through capacitive touch pad
-    touch = ss.moisture_read()
+    try:
+        moisture, temp = read_sensor()
 
-    # read temperature from the temperature sensor
-    temp = ss.get_temp()
+        mood = get_mood(moisture, temp)
 
-    print("temp: " + str(temp) + "  moisture: " + str(touch))
-    time.sleep(1)
+        print(
+            "moisture={} temp={:.1f}C -> {}".format(
+                moisture, temp, mood.upper()
+            )
+        )
 
-if temp > 40:
+        if mood != current_mood:
+            draw_mood(mood)
+            current_mood = mood
+
+    except Exception as e:
+        print("Sensor read failed:" e)
+
+    time.sleep(read_int)
+
+
